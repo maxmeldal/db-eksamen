@@ -31,5 +31,7 @@
             <column name="date_changed" type="timestamptz"/>
             <column name="upvote_count" type="integer" defaultValue="0"/>
         </createTable>
+        <loadUpdateData tableName="posts" primaryKey="id"
+                        file="/liquibase/testdata/posts.csv"/>
     </changeSet>
 </databaseChangeLog>

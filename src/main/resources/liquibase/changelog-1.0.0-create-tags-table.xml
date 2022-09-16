@@ -15,5 +15,7 @@
             </column>
             <column name="content" type="text"/>
         </createTable>
+        <loadUpdateData tableName="tags" primaryKey="id"
+                        file="/liquibase/testdata/tags.csv"/>
     </changeSet>
 </databaseChangeLog>

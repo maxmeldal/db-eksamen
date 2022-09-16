@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+    <preConditions>
+        <dbms type="postgresql"/>
+    </preConditions>
+    <changeSet id="1.0.0:dbeksamen:update_last_online_on_login" author="MTM">
+        <createProcedure>
+            CREATE OR REPLACE FUNCTION update_last_online_on_login() RETURNS trigger AS $proc$
+                BEGIN
+                    UPDATE users SET last_online = NOW();
+                END
+                $proc$ LANGUAGE plpgsql;
+        </createProcedure>
+    </changeSet>
+</databaseChangeLog>

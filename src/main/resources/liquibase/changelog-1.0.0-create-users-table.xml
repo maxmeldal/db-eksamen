@@ -28,6 +28,9 @@
             <column name="posts_count" type="integer" defaultValue="0"/>
             <column name="experience" type="integer" defaultValue="0"/>
             <column name="level" type="integer"/>
+            <column name="last_online" type="timestamptz"/>
         </createTable>
+        <loadUpdateData tableName="users" primaryKey="id"
+                        file="/liquibase/testdata/users.csv"/>
     </changeSet>
 </databaseChangeLog>
