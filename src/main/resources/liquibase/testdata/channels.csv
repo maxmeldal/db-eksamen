@@ -1,4 +1,4 @@
-name,user_id,created_at,post_count,active
+name,user_id,created_at,posts_count,active
 Reduced dedicated hierarchy,647,'2022-04-10',468630,false
 Persistent 6th generation array,787,'2022-01-25',749625,false
 Universal 3rd generation budgetary management,328,'2021-11-16',552321,true
