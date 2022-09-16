@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <changeSet id="1.0.0:dbeksamen:create-upvotes-table" author="MTM">
+        <createTable tableName="upvotes">
+            <column name="user_id" type="integer">
+                <constraints nullable="false"
+                             foreignKeyName="fk_user_id"
+                             references="users(id)"/>
+            </column>
+            <column name="post_id" type="integer">
+                <constraints nullable="false"
+                             foreignKeyName="fk_post_id"
+                             references="posts(id)"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="upvotes"
+                       columnNames="user_id, post_id"/>
+    </changeSet>
+</databaseChangeLog>

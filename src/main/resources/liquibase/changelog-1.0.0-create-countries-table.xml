@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <changeSet id="1.0.0:dbeksamen:create-countries-table" author="MTM">
+        <createTable tableName="countries">
+            <column name="alpha_two_code" type="text">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="numeric_code" type="integer">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="name" type="text">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="alpha_three_code" type="text">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+        <loadUpdateData tableName="countries" primaryKey="alpha_two_code"
+                        file="/liquibase/data/countries.csv"/>
+    </changeSet>
+</databaseChangeLog>
