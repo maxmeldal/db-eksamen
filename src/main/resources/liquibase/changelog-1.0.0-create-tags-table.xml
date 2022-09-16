@@ -3,11 +3,17 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
 
-    <changeSet id="1.0.0:dbeksamen:test-table" author="MTM">
-        <createTable tableName="test">
+    <changeSet id="1.0.0:dbeksamen:create-tags-table" author="MTM">
+        <createTable tableName="tags">
             <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" unique="true" nullable="false"/>
             </column>
+            <column name="channel_id" type="integer">
+                <constraints nullable="false"
+                             foreignKeyName="fk_channel_id"
+                             references="channels(id)"/>
+            </column>
+            <column name="content" type="text"/>
         </createTable>
     </changeSet>
-
 </databaseChangeLog>
