@@ -12,4 +12,6 @@
     <include file="liquibase/changelog-1.0.0-create-posts-table.xml"/>
     <include file="liquibase/changelog-1.0.0-create-upvotes-table.xml"/>
     <include file="liquibase/changelog-1.0.0-update_last_online_on_login_function.xml"/>
+    <include file="liquibase/changelog-1.0.0-set-up-stored-procedures.xml"/>
+    <include file="liquibase/changelog-1.0.0-set-up-user-country-view.xml"/>
 </databaseChangeLog>
