@@ -30,7 +30,5 @@
             <column name="level" type="integer"/>
             <column name="last_online" type="timestamptz"/>
         </createTable>
-        <loadUpdateData tableName="users" primaryKey="id"
-                        file="/liquibase/testdata/users.csv"/>
     </changeSet>
 </databaseChangeLog>

@@ -18,7 +18,5 @@
         </createTable>
         <addPrimaryKey tableName="upvotes"
                        columnNames="user_id, post_id"/>
-        <loadUpdateData tableName="upvotes" primaryKey="user_id,post_id"
-                        file="/liquibase/testdata/upvotes.csv"/>
     </changeSet>
 </databaseChangeLog>

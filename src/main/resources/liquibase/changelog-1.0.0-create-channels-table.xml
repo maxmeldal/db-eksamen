@@ -22,7 +22,5 @@
             <column name="posts_count" type="integer" defaultValue="0"/>
             <column name="active" type="boolean" defaultValue="false"/>
         </createTable>
-        <loadUpdateData tableName="channels" primaryKey="id"
-                        file="/liquibase/testdata/channels.csv"/>
     </changeSet>
 </databaseChangeLog>

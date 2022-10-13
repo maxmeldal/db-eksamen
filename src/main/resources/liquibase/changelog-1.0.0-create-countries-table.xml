@@ -18,7 +18,5 @@
                 <constraints nullable="false" unique="true"/>
             </column>
         </createTable>
-        <loadUpdateData tableName="countries" primaryKey="alpha_two_code"
-                        file="/liquibase/data/countries.csv"/>
     </changeSet>
 </databaseChangeLog>
