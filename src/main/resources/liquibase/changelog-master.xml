@@ -15,4 +15,5 @@
     <include file="liquibase/changelog-1.0.0-set-up-stored-procedures.xml"/>
     <include file="liquibase/changelog-1.0.0-set-up-user-country-view.xml"/>
     <include file="liquibase/changelog-1.1.0-load-test-data.xml"/>
+    <include file="liquibase/changelog-1.1.0-posts-audit-table.xml"/>
 </databaseChangeLog>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+    <preConditions>
+        <dbms type="postgresql"/>
+    </preConditions>
+    <changeSet id="1.1.0:dbeksamen:posts-audit-table" author="MTM">
+        <createTable tableName="posts_audit">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="post_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="integer">
+                <constraints nullable="false"
+                             foreignKeyName="fk_user_id"
+                             references="users(id)"/>
+            </column>
+            <column name="title" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="content" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="timestamptz">
+                <constraints nullable="false"/>
+            </column>
+            <column name="responds_to" type="integer"/>
+        </createTable>
+        <createProcedure>
+            CREATE OR REPLACE FUNCTION audit_posts() RETURNS TRIGGER
+                LANGUAGE plpgsql
+                AS $$
+            BEGIN
+                INSERT INTO posts_audit(post_id, user_id, title, content, date, responds_to)
+                VALUES(NEW.id, NEW.user_id, NEW.title, NEW.content, NOW(), NEW.responds_to);
+                RETURN NEW;
+            END $$;
+        </createProcedure>
+        <createProcedure>
+            CREATE TRIGGER audit_posts_after_insert
+                AFTER INSERT ON posts
+                FOR EACH ROW EXECUTE PROCEDURE audit_posts();
+        </createProcedure>
+        <createProcedure>
+            CREATE TRIGGER audit_posts_after_update
+                AFTER UPDATE ON posts
+                FOR EACH ROW EXECUTE PROCEDURE audit_posts();
+        </createProcedure>
+    </changeSet>
+</databaseChangeLog>
